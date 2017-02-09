@@ -7,8 +7,8 @@ import java.util.Date;
 public abstract class Transaction {
 
     private final double amount;
-    private Date date;
     private final String description;
+    private Date date;
     private boolean done;
 
     protected Transaction(final double amount, final String description) {
