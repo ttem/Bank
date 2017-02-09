@@ -1,5 +1,6 @@
 package com.ttem.model.account;
 
+import com.ttem.model.exception.account.AccountException;
 import com.ttem.model.exception.account.AccountNumberException;
 import com.ttem.model.exception.transaction.TransactionException;
 import com.ttem.model.transaction.accounttransaction.AccountTransaction;
@@ -19,7 +20,7 @@ public class Account {
         this.historyTransaction = getHistoryTransactionFromDataBase();
     }
 
-    public boolean doTransaction(final AccountTransaction transaction) throws TransactionException, AccountNumberException{
+    public boolean doTransaction(final AccountTransaction transaction) throws TransactionException, AccountException{
         if (this.isValid() && transaction != null && transaction.doTransaction()){
             addTransactionToDataBase(transaction);
             return true;
@@ -27,7 +28,7 @@ public class Account {
         return false;
     }
 
-    private boolean isValid() throws AccountNumberException{
+    boolean isValid() throws AccountNumberException{
         if (this.number.length != 15){
             throw  new AccountNumberException(this.number + " invalid account number");
         }
