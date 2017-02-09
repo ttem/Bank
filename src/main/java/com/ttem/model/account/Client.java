@@ -1,5 +1,6 @@
 package com.ttem.model.account;
 
+import com.ttem.model.exception.account.AccountDuplicateException;
 import com.ttem.model.exception.account.AccountException;
 import com.ttem.model.exception.transaction.clienttransaction.ClientTransactionException;
 import com.ttem.model.transaction.clienttransaction.ClientTransaction;
@@ -25,10 +26,10 @@ public class Client extends Person{
         return false;
     }
 
-    private boolean isNewAccount(final Account newAccount) {
+    private boolean isNewAccount(final Account newAccount) throws AccountDuplicateException {
         for (Account existingAccount : this.getAccountList()) {
             if (existingAccount == newAccount){
-                return false;
+                throw new AccountDuplicateException(newAccount.toString() + "this account already exists");
             }
         }
         return true;
