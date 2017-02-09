@@ -1,8 +1,8 @@
 package com.ttem.model.exception.transaction.clienttransaction.wireout;
 
-import com.ttem.model.exception.transaction.accounttransaction.AccountTransactionException;
+import com.ttem.model.exception.transaction.clienttransaction.ClientTransactionException;
 
-public class WireOutException extends AccountTransactionException {
+public class WireOutException extends ClientTransactionException{
 
     public WireOutException() {
     }
