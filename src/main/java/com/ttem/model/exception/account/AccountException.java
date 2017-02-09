@@ -1,8 +1,8 @@
 package com.ttem.model.exception.account;
 
-import com.ttem.model.exception.BankException;
+import com.ttem.model.exception.bank.BankException;
 
-public class AccountException extends BankException {
+public class AccountException extends BankException{
 
     public AccountException() {
     }

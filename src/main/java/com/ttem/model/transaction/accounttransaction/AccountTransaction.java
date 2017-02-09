@@ -1,5 +1,7 @@
 package com.ttem.model.transaction.accounttransaction;
 
+import com.ttem.model.exception.bank.BankException;
+import com.ttem.model.exception.transaction.accounttransaction.AccountTransactionException;
 import com.ttem.model.transaction.Transaction;
 
 public abstract class AccountTransaction extends Transaction{
@@ -9,5 +11,5 @@ public abstract class AccountTransaction extends Transaction{
     }
 
     @Override
-    public abstract boolean doTransaction();
+    public abstract boolean doTransaction() throws AccountTransactionException;
 }

@@ -1,4 +1,4 @@
-package com.ttem.model.exception;
+package com.ttem.model.exception.bank;
 
 public class BankException extends Exception{
 

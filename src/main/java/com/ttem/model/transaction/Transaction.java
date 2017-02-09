@@ -1,5 +1,7 @@
 package com.ttem.model.transaction;
 
+import com.ttem.model.exception.transaction.TransactionException;
+
 import java.util.Date;
 
 public abstract class Transaction {
@@ -14,7 +16,7 @@ public abstract class Transaction {
         this.description = description;
     }
 
-    public abstract boolean doTransaction();
+    public abstract boolean doTransaction() throws TransactionException;
 
     public double getAmount() {
         return this.amount;
@@ -32,13 +34,13 @@ public abstract class Transaction {
         return this.done;
     }
 
-    public void setDate(final Date date) {
+    protected void setDate(final Date date) {
         if (this.getDate() == null) {
             this.date = date;
         }
     }
 
-    public void setDone(final boolean done) {
+    protected void setDone(final boolean done) {
         if (!this.isDone()) {
             this.done = done;
         }
