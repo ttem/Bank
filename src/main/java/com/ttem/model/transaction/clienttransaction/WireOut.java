@@ -47,7 +47,8 @@ public class WireOut extends ClientTransaction{
     private boolean isValid() throws WireOutValidException {
         return this.isNotDone()
                 && this.amountValid()
-                && this.accountValid() && this.swiftValid();
+                && this.accountValid()
+                && this.swiftValid();
     }
 
     private boolean swiftValid() throws WireOutSwiftException{

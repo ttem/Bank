@@ -1,6 +1,7 @@
 package com.ttem.model.accounttest.account;
 
 import com.ttem.model.account.Account;
+import com.ttem.model.exception.account.AccountException;
 import com.ttem.model.exception.account.AccountNumberException;
 import com.ttem.model.exception.transaction.TransactionException;
 import com.ttem.model.transaction.accounttransaction.Check;
@@ -27,22 +28,22 @@ public class TestDoTransaction {
     }
 
     @Test
-    public void correctAccountWhenInputCorrectCheck() throws AccountNumberException, TransactionException {
+    public void correctAccountWhenInputCorrectCheck() throws AccountException, TransactionException {
         Assert.assertTrue(correctAccount.doTransaction(correctCheck));
     }
 
     @Test
-    public void correctAccountWhenInputCorrectDeposit() throws AccountNumberException, TransactionException {
+    public void correctAccountWhenInputCorrectDeposit() throws AccountException, TransactionException {
         Assert.assertTrue(correctAccount.doTransaction(correctDeposit));
     }
 
     @Test(expected = AccountNumberException.class)
-    public void incorrectAccountWhenInputCorrectCheck() throws AccountNumberException, TransactionException {
+    public void incorrectAccountWhenInputCorrectCheck() throws AccountException, TransactionException {
         incorrectAccountNumber.doTransaction(correctCheck);
     }
 
     @Test(expected = AccountNumberException.class)
-    public void incorrectAccountWhenInputCorrectDeposit() throws AccountNumberException, TransactionException {
+    public void incorrectAccountWhenInputCorrectDeposit() throws AccountException, TransactionException {
         incorrectAccountNumber.doTransaction(correctDeposit);
     }
 }

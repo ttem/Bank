@@ -19,7 +19,7 @@ public class Client extends Person{
     }
 
     public boolean addNewAccount(final Account newAccount) throws AccountException {
-        if (newAccount.isValid() && isNewAccount(newAccount)){
+        if (newAccount != null && newAccount.isValid() && isNewAccount(newAccount)){
             return addNewAccountToDataBase(newAccount);
         }
         return false;
