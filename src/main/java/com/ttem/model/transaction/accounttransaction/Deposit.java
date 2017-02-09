@@ -33,7 +33,7 @@ public class Deposit extends AccountTransaction{
     }
 
     private boolean isValid() throws DepositValidException{
-        return this != null && this.isNotDone() && this.amountValid() && this.accountValid();
+        return this.isNotDone() && this.amountValid() && this.accountValid();
     }
 
     private boolean isNotDone() throws DepositDoneException {

@@ -33,7 +33,7 @@ public class Check extends AccountTransaction{
     }
 
     private boolean isValid() throws CheckValidException{
-        return this != null && this.isNotDone() && this.amountValid() && this.accountValid();
+        return this.isNotDone() && this.amountValid() && this.accountValid();
     }
 
     private boolean isNotDone() throws CheckDoneException {
