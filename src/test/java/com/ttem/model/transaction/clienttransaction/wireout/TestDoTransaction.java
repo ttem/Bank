@@ -11,7 +11,7 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class DoTransaction {
+public class TestDoTransaction {
 
     private static Account correctAccount;
     private static Account incorrectAccountNumber;
