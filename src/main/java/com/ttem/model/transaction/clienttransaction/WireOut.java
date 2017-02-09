@@ -89,23 +89,23 @@ public class WireOut extends ClientTransaction{
         private  byte[] swift;
         private  String description;
 
-        public double getAmount() {
+        private double getAmount() {
             return this.amount;
         }
 
-        public Account getToAccount() {
+        private Account getToAccount() {
             return this.toAccount;
         }
 
-        public String getCountry() {
+        private String getCountry() {
             return this.country;
         }
 
-        public byte[] getSwift() {
+        private byte[] getSwift() {
             return this.swift;
         }
 
-        public String getDescription() {
+        private String getDescription() {
             return this.description;
         }
 
