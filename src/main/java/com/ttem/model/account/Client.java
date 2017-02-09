@@ -42,7 +42,7 @@ public class Client extends Person{
         return false;
     }
 
-    private boolean isValid() {
+    public boolean isValid() {
         return true;
     }
 
