@@ -28,7 +28,7 @@ public class Account {
         return false;
     }
 
-    boolean isValid() throws AccountNumberException{
+    public boolean isValid() throws AccountNumberException{
         if (this.number.length != 15){
             throw  new AccountNumberException(this.number + " invalid account number");
         }
