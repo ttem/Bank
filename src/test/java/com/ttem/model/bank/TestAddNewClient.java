@@ -1,6 +1,5 @@
 package com.ttem.model.bank;
 
-
 import com.ttem.model.account.Client;
 import org.junit.Assert;
 import org.junit.Test;
