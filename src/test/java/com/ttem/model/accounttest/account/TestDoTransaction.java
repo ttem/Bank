@@ -24,7 +24,7 @@ public class TestDoTransaction {
         incorrectAccountNumber = new Account(new byte[12], "incorrect number");
 
         correctCheck = new Check(2.3, correctAccount, "correct check");
-        correctDeposit = new Deposit(2.3, correctAccount, "correct deposi");
+        correctDeposit = new Deposit(2.3, correctAccount, "correct deposit");
     }
 
     @Test
