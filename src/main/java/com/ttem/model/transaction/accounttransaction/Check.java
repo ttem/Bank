@@ -1,12 +1,11 @@
 package com.ttem.model.transaction.accounttransaction;
 
 import com.ttem.model.account.Account;
-import com.ttem.model.exception.transaction.accounttransaction.check.*;
+import com.ttem.model.exception.transaction.accounttransaction.check.CheckException;
 import com.ttem.model.exception.transaction.accounttransaction.check.valid.CheckAccountException;
 import com.ttem.model.exception.transaction.accounttransaction.check.valid.CheckAmountException;
 import com.ttem.model.exception.transaction.accounttransaction.check.valid.CheckDoneException;
 import com.ttem.model.exception.transaction.accounttransaction.check.valid.CheckValidException;
-
 import java.util.Date;
 
 public class Check extends AccountTransaction{
@@ -48,7 +47,7 @@ public class Check extends AccountTransaction{
     }
 
     private boolean amountValid() throws CheckAmountException {
-        if (this.getAmount() < 0){
+        if (this.getAmount() <= 0.0){
             throw new CheckAmountException(this.getAmount() + " invalid amount");
         }
         return true;
@@ -58,7 +57,7 @@ public class Check extends AccountTransaction{
         if (this.getToAccount() == null){
             return false;
         }
-        if (getToAccount().getNumber().length != 15){
+        else if (getToAccount().getNumber().length != 15){
             throw new CheckAccountException(getToAccount().toString() + " this account has invalid number");
         }
         return true;

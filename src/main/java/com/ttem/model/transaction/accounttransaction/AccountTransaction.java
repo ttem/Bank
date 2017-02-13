@@ -1,6 +1,5 @@
 package com.ttem.model.transaction.accounttransaction;
 
-import com.ttem.model.exception.bank.BankException;
 import com.ttem.model.exception.transaction.accounttransaction.AccountTransactionException;
 import com.ttem.model.transaction.Transaction;
 

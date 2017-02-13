@@ -4,6 +4,7 @@ import com.ttem.model.account.Account;
 import com.ttem.model.exception.transaction.clienttransaction.wireout.*;
 import com.ttem.model.exception.transaction.clienttransaction.wireout.valid.*;
 
+import java.util.Arrays;
 import java.util.Date;
 
 public class WireOut extends ClientTransaction{
@@ -12,7 +13,7 @@ public class WireOut extends ClientTransaction{
     private final byte[] swift;
     private final Account toAccount;
 
-    public WireOut(final Builder builder) {
+    private WireOut(final Builder builder) {
         super(builder.getAmount(), builder.getDescription());
         this.country = builder.getCountry();
         this.swift = builder.getSwift();
@@ -32,11 +33,11 @@ public class WireOut extends ClientTransaction{
     }
 
     public String getCountry() {
-        return country;
+        return this.country;
     }
 
     public byte[] getSwift() {
-        return swift;
+        return this.swift;
     }
 
     private boolean executionOfTransaction() {
@@ -52,13 +53,6 @@ public class WireOut extends ClientTransaction{
                 && this.swiftValid();
     }
 
-    private boolean swiftValid() throws WireOutSwiftException {
-        if (this.getSwift().length != 15){
-            throw new WireOutSwiftException(this.getSwift() + " invalid swift");
-        }
-        return true;
-    }
-
     private boolean isNotDone() throws WireOutDoneException {
         if (this.isDone()){
             throw new WireOutDoneException(this.toString() + " this transaction is completed");
@@ -67,7 +61,7 @@ public class WireOut extends ClientTransaction{
     }
 
     private boolean amountValid() throws WireOutAmountException {
-        if (this.getAmount() < 0){
+        if (this.getAmount() <= 0.0){
             throw new WireOutAmountException(this.getAmount() + " invalid amount");
         }
         return true;
@@ -77,8 +71,15 @@ public class WireOut extends ClientTransaction{
         if (this.getToAccount() == null){
             return false;
         }
-        if (getToAccount().getNumber().length != 15){
+        else if (getToAccount().getNumber().length != 15){
             throw new WireOutAccountException(getToAccount().toString() + " this account has invalid number");
+        }
+        return true;
+    }
+
+    private boolean swiftValid() throws WireOutSwiftException {
+        if (this.getSwift().length != 15){
+            throw new WireOutSwiftException(Arrays.toString(this.swift) + " invalid swift");
         }
         return true;
     }

@@ -1,7 +1,6 @@
 package com.ttem.model.transaction;
 
 import com.ttem.model.exception.transaction.TransactionException;
-
 import java.util.Date;
 
 public abstract class Transaction {
