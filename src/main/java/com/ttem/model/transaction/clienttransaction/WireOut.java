@@ -2,6 +2,7 @@ package com.ttem.model.transaction.clienttransaction;
 
 import com.ttem.model.account.Account;
 import com.ttem.model.exception.transaction.clienttransaction.wireout.*;
+import com.ttem.model.exception.transaction.clienttransaction.wireout.valid.*;
 
 import java.util.Date;
 
@@ -51,28 +52,28 @@ public class WireOut extends ClientTransaction{
                 && this.swiftValid();
     }
 
-    private boolean swiftValid() throws WireOutSwiftException{
+    private boolean swiftValid() throws WireOutSwiftException {
         if (this.getSwift().length != 15){
             throw new WireOutSwiftException(this.getSwift() + " invalid swift");
         }
         return true;
     }
 
-    private boolean isNotDone() throws WireOutDoneException{
+    private boolean isNotDone() throws WireOutDoneException {
         if (this.isDone()){
             throw new WireOutDoneException(this.toString() + " this transaction is completed");
         }
         return true;
     }
 
-    private boolean amountValid() throws WireOutAmountException{
+    private boolean amountValid() throws WireOutAmountException {
         if (this.getAmount() < 0){
             throw new WireOutAmountException(this.getAmount() + " invalid amount");
         }
         return true;
     }
 
-    private boolean accountValid() throws WireOutAccountException{
+    private boolean accountValid() throws WireOutAccountException {
         if (this.getToAccount() == null){
             return false;
         }

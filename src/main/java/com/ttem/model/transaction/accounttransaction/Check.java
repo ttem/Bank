@@ -2,6 +2,10 @@ package com.ttem.model.transaction.accounttransaction;
 
 import com.ttem.model.account.Account;
 import com.ttem.model.exception.transaction.accounttransaction.check.*;
+import com.ttem.model.exception.transaction.accounttransaction.check.valid.CheckAccountException;
+import com.ttem.model.exception.transaction.accounttransaction.check.valid.CheckAmountException;
+import com.ttem.model.exception.transaction.accounttransaction.check.valid.CheckDoneException;
+import com.ttem.model.exception.transaction.accounttransaction.check.valid.CheckValidException;
 
 import java.util.Date;
 
@@ -32,7 +36,7 @@ public class Check extends AccountTransaction{
         return this.isDone();
     }
 
-    private boolean isValid() throws CheckValidException{
+    private boolean isValid() throws CheckValidException {
         return this.isNotDone() && this.amountValid() && this.accountValid();
     }
 
@@ -50,7 +54,7 @@ public class Check extends AccountTransaction{
         return true;
     }
 
-    private boolean accountValid() throws CheckAccountException{
+    private boolean accountValid() throws CheckAccountException {
         if (this.getToAccount() == null){
             return false;
         }

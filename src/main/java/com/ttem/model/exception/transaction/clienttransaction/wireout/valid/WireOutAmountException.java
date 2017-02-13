@@ -1,4 +1,4 @@
-package com.ttem.model.exception.transaction.clienttransaction.wireout;
+package com.ttem.model.exception.transaction.clienttransaction.wireout.valid;
 
 public class WireOutAmountException extends WireOutValidException {
 

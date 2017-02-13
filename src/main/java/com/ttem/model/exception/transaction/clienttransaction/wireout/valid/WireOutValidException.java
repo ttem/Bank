@@ -1,4 +1,6 @@
-package com.ttem.model.exception.transaction.clienttransaction.wireout;
+package com.ttem.model.exception.transaction.clienttransaction.wireout.valid;
+
+import com.ttem.model.exception.transaction.clienttransaction.wireout.WireOutException;
 
 public class WireOutValidException extends WireOutException {
 

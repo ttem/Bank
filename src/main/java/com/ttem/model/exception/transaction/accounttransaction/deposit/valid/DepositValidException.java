@@ -1,4 +1,6 @@
-package com.ttem.model.exception.transaction.accounttransaction.deposit;
+package com.ttem.model.exception.transaction.accounttransaction.deposit.valid;
+
+import com.ttem.model.exception.transaction.accounttransaction.deposit.DepositException;
 
 public class DepositValidException extends DepositException {
 

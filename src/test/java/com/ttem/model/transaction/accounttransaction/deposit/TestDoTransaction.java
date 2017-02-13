@@ -2,9 +2,9 @@ package com.ttem.model.transaction.accounttransaction.deposit;
 
 import com.ttem.model.account.Account;
 import com.ttem.model.exception.transaction.TransactionException;
-import com.ttem.model.exception.transaction.accounttransaction.deposit.DepositAccountException;
-import com.ttem.model.exception.transaction.accounttransaction.deposit.DepositAmountException;
-import com.ttem.model.exception.transaction.accounttransaction.deposit.DepositDoneException;
+import com.ttem.model.exception.transaction.accounttransaction.deposit.valid.DepositAccountException;
+import com.ttem.model.exception.transaction.accounttransaction.deposit.valid.DepositAmountException;
+import com.ttem.model.exception.transaction.accounttransaction.deposit.valid.DepositDoneException;
 import com.ttem.model.transaction.accounttransaction.Deposit;
 import org.junit.Assert;
 import org.junit.BeforeClass;

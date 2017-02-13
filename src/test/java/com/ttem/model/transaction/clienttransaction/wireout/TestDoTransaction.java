@@ -2,10 +2,10 @@ package com.ttem.model.transaction.clienttransaction.wireout;
 
 import com.ttem.model.account.Account;
 import com.ttem.model.exception.transaction.TransactionException;
-import com.ttem.model.exception.transaction.clienttransaction.wireout.WireOutAccountException;
-import com.ttem.model.exception.transaction.clienttransaction.wireout.WireOutAmountException;
-import com.ttem.model.exception.transaction.clienttransaction.wireout.WireOutDoneException;
-import com.ttem.model.exception.transaction.clienttransaction.wireout.WireOutSwiftException;
+import com.ttem.model.exception.transaction.clienttransaction.wireout.valid.WireOutAccountException;
+import com.ttem.model.exception.transaction.clienttransaction.wireout.valid.WireOutAmountException;
+import com.ttem.model.exception.transaction.clienttransaction.wireout.valid.WireOutDoneException;
+import com.ttem.model.exception.transaction.clienttransaction.wireout.valid.WireOutSwiftException;
 import com.ttem.model.transaction.clienttransaction.WireOut;
 import org.junit.Assert;
 import org.junit.BeforeClass;

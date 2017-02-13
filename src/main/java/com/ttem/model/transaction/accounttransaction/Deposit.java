@@ -2,6 +2,10 @@ package com.ttem.model.transaction.accounttransaction;
 
 import com.ttem.model.account.Account;
 import com.ttem.model.exception.transaction.accounttransaction.deposit.*;
+import com.ttem.model.exception.transaction.accounttransaction.deposit.valid.DepositAccountException;
+import com.ttem.model.exception.transaction.accounttransaction.deposit.valid.DepositAmountException;
+import com.ttem.model.exception.transaction.accounttransaction.deposit.valid.DepositDoneException;
+import com.ttem.model.exception.transaction.accounttransaction.deposit.valid.DepositValidException;
 
 import java.util.Date;
 
@@ -32,7 +36,7 @@ public class Deposit extends AccountTransaction{
         return this.isDone();
     }
 
-    private boolean isValid() throws DepositValidException{
+    private boolean isValid() throws DepositValidException {
         return this.isNotDone() && this.amountValid() && this.accountValid();
     }
 
