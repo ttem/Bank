@@ -4,7 +4,6 @@ import com.ttem.model.account.Account;
 import com.ttem.model.exception.transaction.TransactionException;
 import com.ttem.model.exception.transaction.accounttransaction.check.valid.CheckAccountException;
 import com.ttem.model.exception.transaction.accounttransaction.check.valid.CheckAmountException;
-import com.ttem.model.exception.transaction.accounttransaction.check.valid.CheckDoneException;
 import com.ttem.model.transaction.accounttransaction.Check;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -16,13 +15,12 @@ public class TestDoTransaction {
     private static Account incorrectAccountNumber;
 
     private static Check correctCheck;
-    private static Check incorrectCheckDone;
     private static Check incorrectCheckAmount;
     private static Check incorrectCheckAccountNumber;
     private static Check incorrectCheckAccountNull;
 
     @BeforeClass
-    public static void setUp() throws Exception {
+    public static void setUp() {
         correctAccount = new Account(new byte[15], "correct");
         incorrectAccountNumber = new Account(new byte[12], "incorrect number");
 
@@ -35,14 +33,6 @@ public class TestDoTransaction {
     @Test
     public void whenInputCorrectCheck() throws TransactionException {
         Assert.assertTrue(correctCheck.doTransaction());
-    }
-
-    @Test(expected = CheckDoneException.class)
-    public void whenInputIncorrectCheckDone() throws TransactionException {
-        incorrectCheckDone = correctCheck;
-        incorrectCheckDone.doTransaction();
-
-        incorrectCheckDone.doTransaction();
     }
 
     @Test(expected = CheckAmountException.class)

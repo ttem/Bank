@@ -2,9 +2,9 @@ package com.ttem.model.transaction.clienttransaction.wireout;
 
 import com.ttem.model.account.Account;
 import com.ttem.model.exception.transaction.TransactionException;
+import com.ttem.model.exception.transaction.clienttransaction.wireout.WireOutException;
 import com.ttem.model.exception.transaction.clienttransaction.wireout.valid.WireOutAccountException;
 import com.ttem.model.exception.transaction.clienttransaction.wireout.valid.WireOutAmountException;
-import com.ttem.model.exception.transaction.clienttransaction.wireout.valid.WireOutDoneException;
 import com.ttem.model.exception.transaction.clienttransaction.wireout.valid.WireOutSwiftException;
 import com.ttem.model.transaction.clienttransaction.WireOut;
 import org.junit.Assert;
@@ -17,14 +17,13 @@ public class TestDoTransaction {
     private static Account incorrectAccountNumber;
 
     private static WireOut correctWireOut;
-    private static WireOut incorrectWireOutDone;
     private static WireOut incorrectWireOutAmount;
     private static WireOut incorrectWireOutSwift;
     private static WireOut incorrectWireOutAccountNumber;
     private static WireOut incorrectWireOutAccountNull;
 
     @BeforeClass
-    public static void setUp() throws Exception {
+    public static void setUp() {
         correctAccount = new Account(new byte[15], "correct");
         incorrectAccountNumber = new Account(new byte[12], "incorrect number");
 
@@ -76,21 +75,13 @@ public class TestDoTransaction {
         Assert.assertTrue(correctWireOut.doTransaction());
     }
 
-    @Test(expected = WireOutDoneException.class)
-    public void whenInputIncorrectCheckDone() throws TransactionException {
-        incorrectWireOutDone = correctWireOut;
-        incorrectWireOutDone.doTransaction();
-
-        incorrectWireOutDone.doTransaction();
-    }
-
     @Test(expected = WireOutAmountException.class)
     public void whenInputIncorrectWireOutAmount() throws TransactionException {
         incorrectWireOutAmount.doTransaction();
     }
 
     @Test(expected = WireOutSwiftException.class)
-    public void whenInputIncorrectWireOutSwift() throws Exception {
+    public void whenInputIncorrectWireOutSwift() throws WireOutException {
         incorrectWireOutSwift.doTransaction();
     }
 

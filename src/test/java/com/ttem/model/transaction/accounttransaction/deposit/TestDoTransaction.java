@@ -4,7 +4,6 @@ import com.ttem.model.account.Account;
 import com.ttem.model.exception.transaction.TransactionException;
 import com.ttem.model.exception.transaction.accounttransaction.deposit.valid.DepositAccountException;
 import com.ttem.model.exception.transaction.accounttransaction.deposit.valid.DepositAmountException;
-import com.ttem.model.exception.transaction.accounttransaction.deposit.valid.DepositDoneException;
 import com.ttem.model.transaction.accounttransaction.Deposit;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -16,7 +15,6 @@ public class TestDoTransaction {
     private static Account incorrectAccountNumber;
 
     private static Deposit correctDeposit;
-    private static Deposit incorrectDepositDone;
     private static Deposit incorrectDepositAmount;
     private static Deposit incorrectDepositAccountNumber;
     private static Deposit incorrectDepositAccountNull;
@@ -26,7 +24,7 @@ public class TestDoTransaction {
         correctAccount = new Account(new byte[15], "correct");
         incorrectAccountNumber = new Account(new byte[12], "incorrect number");
 
-        correctDeposit = new Deposit(2.3, correctAccount, "correct deposi");
+        correctDeposit = new Deposit(2.3, correctAccount, "correct deposit");
         incorrectDepositAmount = new Deposit(-3.4, correctAccount, "incorrect amount");
         incorrectDepositAccountNumber = new Deposit(3.4, incorrectAccountNumber, "incorrect account number");
         incorrectDepositAccountNull = new Deposit(3.4, null, "incorrect account null");
@@ -35,14 +33,6 @@ public class TestDoTransaction {
     @Test
     public void whenInputCorrectDeposit() throws TransactionException {
         Assert.assertTrue(correctDeposit.doTransaction());
-    }
-
-    @Test(expected = DepositDoneException.class)
-    public void whenInputIncorrectDepositDone() throws TransactionException {
-        incorrectDepositDone = correctDeposit;
-        incorrectDepositDone.doTransaction();
-
-        incorrectDepositDone.doTransaction();
     }
 
     @Test(expected = DepositAmountException.class)
