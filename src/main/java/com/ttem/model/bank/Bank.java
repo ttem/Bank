@@ -3,12 +3,10 @@ package com.ttem.model.bank;
 import com.ttem.model.account.Client;
 import com.ttem.model.exception.account.client.ClientDuplicateException;
 import com.ttem.model.exception.account.client.ClientException;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Bank {
-
 
     private final String name;
     private final List<Client> clientDataBase;
@@ -25,6 +23,14 @@ public class Bank {
         return false;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
+    public List<Client> getClientDataBase() {
+        return this.clientDataBase;
+    }
+
     private boolean isNewClient(final Client newClient) throws ClientDuplicateException {
         for (Client existingClient : this.getClientDataBase()) {
             if (existingClient == newClient){
@@ -34,19 +40,11 @@ public class Bank {
         return true;
     }
 
-    public String getName() {
-        return this.name;
-    }
-
-    public List<Client> getClientDataBase() {
-        return this.clientDataBase;
+    private boolean addClientToDataBase(final Client newClient) {
+        return this.clientDataBase.add(newClient);
     }
 
     private List<Client> getClientListFromDataBase() {
         return new ArrayList<>();
-    }
-
-    private boolean addClientToDataBase(final Client newClient) {
-        return this.clientDataBase.add(newClient);
     }
 }

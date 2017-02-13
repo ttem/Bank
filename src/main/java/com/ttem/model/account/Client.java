@@ -4,7 +4,6 @@ import com.ttem.model.exception.account.AccountDuplicateException;
 import com.ttem.model.exception.account.AccountException;
 import com.ttem.model.exception.transaction.clienttransaction.ClientTransactionException;
 import com.ttem.model.transaction.clienttransaction.ClientTransaction;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,15 +23,6 @@ public class Client extends Person{
             return addNewAccountToDataBase(newAccount);
         }
         return false;
-    }
-
-    private boolean isNewAccount(final Account newAccount) throws AccountDuplicateException {
-        for (Account existingAccount : this.getAccountList()) {
-            if (existingAccount == newAccount){
-                throw new AccountDuplicateException(newAccount.toString() + "this account already exists");
-            }
-        }
-        return true;
     }
 
     public boolean doTransaction(final ClientTransaction transaction) throws ClientTransactionException {
@@ -55,12 +45,13 @@ public class Client extends Person{
         return this.accountList;
     }
 
-    private List<ClientTransaction> getHistoryTransactionFromDataBase() {
-        return new ArrayList<>();
-    }
-
-    private List<Account> getAccountListFromDataBase() {
-        return new ArrayList<>();
+    private boolean isNewAccount(final Account newAccount) throws AccountDuplicateException {
+        for (Account existingAccount : this.getAccountList()) {
+            if (existingAccount == newAccount){
+                throw new AccountDuplicateException(newAccount.toString() + " this account already exists");
+            }
+        }
+        return true;
     }
 
     private boolean addNewAccountToDataBase(final Account newAccount) {
@@ -69,5 +60,13 @@ public class Client extends Person{
 
     private boolean addTransactionToDataBase(final ClientTransaction transaction) {
         return this.historyTransaction.add(transaction);
+    }
+
+    private List<ClientTransaction> getHistoryTransactionFromDataBase() {
+        return new ArrayList<>();
+    }
+
+    private List<Account> getAccountListFromDataBase() {
+        return new ArrayList<>();
     }
 }

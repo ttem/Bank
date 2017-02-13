@@ -4,20 +4,20 @@ import com.ttem.model.exception.account.AccountException;
 import com.ttem.model.exception.account.AccountNumberException;
 import com.ttem.model.exception.transaction.TransactionException;
 import com.ttem.model.transaction.accounttransaction.AccountTransaction;
-
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Account {
 
     private final byte[] number;
-    private final String description;
     private final List<AccountTransaction> historyTransaction;
+    private final String description;
 
     public Account(final byte[] number, final String description) {
         this.number = number;
-        this.description = description;
         this.historyTransaction = getHistoryTransactionFromDataBase();
+        this.description = description;
     }
 
     public boolean doTransaction(final AccountTransaction transaction) throws TransactionException, AccountException{
@@ -30,7 +30,7 @@ public class Account {
 
     public boolean isValid() throws AccountNumberException{
         if (this.number.length != 15){
-            throw  new AccountNumberException(this.number + " invalid account number");
+            throw  new AccountNumberException(Arrays.toString(number) + " invalid account number");
         }
         return true;
     }
@@ -47,11 +47,11 @@ public class Account {
         return this.historyTransaction;
     }
 
-    private List<AccountTransaction> getHistoryTransactionFromDataBase() {
-        return new ArrayList<>();
-    }
-
     private boolean addTransactionToDataBase(final AccountTransaction transaction) {
         return this.historyTransaction.add(transaction);
+    }
+
+    private List<AccountTransaction> getHistoryTransactionFromDataBase() {
+        return new ArrayList<>();
     }
 }
